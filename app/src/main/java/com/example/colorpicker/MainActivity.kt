@@ -3,20 +3,13 @@ package com.example.colorpicker
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.slider.Slider
-import java.text.DecimalFormat
 
 
-
-
-@Suppress("NAME_SHADOWING")
 class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             blueSlider.value = blue.toInt(16).toFloat()
         }
 
-        blueSlider.addOnChangeListener { blueslider, value, fromUser ->
+        blueSlider.addOnChangeListener { _, value, fromUser ->
             if (fromUser) {
                 blue= hexArray[value.toInt()]
 
@@ -95,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        greenSlider.addOnChangeListener { greenslider, value, fromUser ->
+        greenSlider.addOnChangeListener { _, value, fromUser ->
             if (fromUser) {
                 green = hexArray[value.toInt()]
 
@@ -106,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        redSlider.addOnChangeListener { redslider, value, fromUser ->
+        redSlider.addOnChangeListener { _, value, fromUser ->
             if (fromUser) {
                 red= hexArray[value.toInt()]
 
