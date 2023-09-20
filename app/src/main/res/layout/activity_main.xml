@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#321"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/bg"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/headText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#321"
+        android:textColor="@color/white"
+        android:textSize="32dp"
+        android:layout_margin="48dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="32dp"
+            android:layout_height="320dp"
+            android:layout_margin="32dp">
+            <com.google.android.material.slider.Slider
+                android:id="@+id/redSlider"
+                android:layout_width="320dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:rotation="270"
+                app:haloRadius="1dp"
+                app:labelBehavior="gone"
+                app:thumbRadius="15dp"
+                android:valueTo="15"
+                />
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="32dp"
+            android:layout_height="320dp"
+            android:layout_margin="32dp">
+            <com.google.android.material.slider.Slider
+                android:id="@+id/greenSlider"
+                android:layout_width="320dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:rotation="270"
+                app:haloRadius="1dp"
+                app:labelBehavior="gone"
+                app:thumbRadius="15dp"
+                android:valueTo="15"
+                />
+
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="32dp"
+            android:layout_height="320dp"
+            android:layout_margin="32dp">
+            <com.google.android.material.slider.Slider
+                android:id="@+id/blueSlider"
+                android:layout_width="320dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:rotation="270"
+                app:haloRadius="1dp"
+                app:labelBehavior="gone"
+                app:thumbRadius="15dp"
+                android:valueTo="15"
+                />
+
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>
