@@ -1,5 +1,6 @@
 package com.example.colorpicker
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +16,9 @@ import java.text.DecimalFormat
 
 
 
+@Suppress("NAME_SHADOWING")
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -45,6 +48,15 @@ class MainActivity : AppCompatActivity() {
         val hexArray = arrayOf(
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"
         )
+        val redArray = arrayOf(
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"
+        )
+        val blueArray = arrayOf(
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"
+        )
+        val greenArray = arrayOf(
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"
+        )
 
         var red = hexArray.random()
         var green = hexArray.random()
@@ -53,9 +65,11 @@ class MainActivity : AppCompatActivity() {
         headText.text = "#$red$green$blue"
         bg.setBackgroundColor(Color.parseColor("#$red$red$green$green$blue$blue"))
 
-        redSlider.value = red.toInt(16).toFloat()
-        greenSlider.value = green.toInt(16).toFloat()
-        blueSlider.value = blue.toInt(16).toFloat()
+
+        redSlider.value = redArray.indexOf(red).toFloat()
+        greenSlider.value = greenArray.indexOf(green).toFloat()
+        blueSlider.value = blueArray.indexOf(blue).toFloat()
+
 
         headText.setOnClickListener {
             red = hexArray.random()
@@ -70,34 +84,39 @@ class MainActivity : AppCompatActivity() {
             blueSlider.value = blue.toInt(16).toFloat()
         }
 
-        redSlider.addOnChangeListener { _, value,_ ->
-            val valueFormat = DecimalFormat("#").format(value)
-            var red = hexArray[valueFormat.toInt()]
+        blueSlider.addOnChangeListener { blueslider, value, fromUser ->
+            if (fromUser) {
+                blue= hexArray[value.toInt()]
 
-            headText.text = "#$red$green$blue"
-            bg.setBackgroundColor(Color.parseColor("#$red$red$green$green$blue$blue"))
-            invertTextColor(bg, headText)
+                headText.text = "#$red$green$blue"
+                bg.setBackgroundColor(Color.parseColor("#$red$red$green$green$blue$blue"))
+
+                invertTextColor(bg, headText)
+            }
         }
 
-        greenSlider.addOnChangeListener { _, value,_ ->
-            val valueFormat = DecimalFormat("#").format(value)
-            var green = hexArray[valueFormat.toInt()]
+        greenSlider.addOnChangeListener { greenslider, value, fromUser ->
+            if (fromUser) {
+                green = hexArray[value.toInt()]
 
-            headText.text = "#$red$green$blue"
-            bg.setBackgroundColor(Color.parseColor("#$red$red$green$green$blue$blue"))
+                headText.text = "#$red$green$blue"
+                bg.setBackgroundColor(Color.parseColor("#$red$red$green$green$blue$blue"))
 
-            invertTextColor(bg, headText)
+                invertTextColor(bg, headText)
+            }
         }
 
-        blueSlider.addOnChangeListener { _, value,_ ->
-            val valueFormat = DecimalFormat("#").format(value)
-            var blue = hexArray[valueFormat.toInt()]
+        redSlider.addOnChangeListener { redslider, value, fromUser ->
+            if (fromUser) {
+                red= hexArray[value.toInt()]
 
-            headText.text = "#$red$green$blue"
-            bg.setBackgroundColor(Color.parseColor("#$red$red$green$green$blue$blue"))
+                headText.text = "#$red$green$blue"
+                bg.setBackgroundColor(Color.parseColor("#$red$red$green$green$blue$blue"))
 
-            invertTextColor(bg, headText)
+                invertTextColor(bg, headText)
+            }
         }
+
 
     }
 }
